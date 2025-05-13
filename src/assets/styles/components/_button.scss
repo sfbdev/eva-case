@@ -1,0 +1,14 @@
+﻿@use '../variables' as *;
+button {
+  height: $button-h;
+  width: 100%;
+  border-radius: $radius-xs;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &.primary {
+    background-color: $primary;
+    color: $light;
+  }
+}
