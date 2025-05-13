@@ -5,17 +5,15 @@ import store from '@/stores/index'
 import { useNotification } from '@kyvg/vue3-notification'
 
 const { notify } = useNotification()
-const token = JSON.parse(localStorage.getItem('auth'))
 export const _axios = axios.create({
   timeout: 30000,
   baseURL: 'https://iapitest.eva.guru',
-  headers: {
-    Authorization: `Bearer ${token ? token.AccessToken : null}`,
-  },
 })
 
 _axios.interceptors.request.use(
   (config) => {
+    const auth = JSON.parse(localStorage.getItem('auth'))
+    config.headers.Authorization = `Bearer ${auth ? auth?.AccessToken : null}`
     return config
   },
   (error) => {

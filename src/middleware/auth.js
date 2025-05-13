@@ -2,7 +2,8 @@
 import router from '@/router'
 
 export default function auth(to, from, next) {
-  const isAuthenticated = store.state.user.userInfo !== null
+  const auth = JSON.parse(localStorage.getItem('auth'))
+  const isAuthenticated = !!auth?.AccessToken
   if (!isAuthenticated && to.name !== 'login') {
     next({ name: 'login' })
   } else {

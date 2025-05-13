@@ -26,6 +26,6 @@ app.use(router)
 app.use(store)
 app.use(Notifications)
 app.use(HighchartsVue)
-// router.beforeEach(auth)
+router.beforeEach(auth)
 
 app.mount('#app')
